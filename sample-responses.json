@@ -1,0 +1,88 @@
+{
+  "list-all-worklogs": {
+    "request": "GET /api/v1/list-all-worklogs?periodStart=2026-03-01&periodEnd=2026-03-31&remittanceStatus=UNREMITTED",
+    "response": {
+      "data": [
+        {
+          "id": "7d9118c8-11fd-47ec-a8af-c7db6f66b07c",
+          "task_name": "Landing page redesign",
+          "work_date": "2026-03-01",
+          "is_adjusted": false,
+          "owner_id": "6b5683ca-908f-42a0-b8af-591e5770e031",
+          "freelancer_email": "admin@example.com",
+          "freelancer_name": "System Admin",
+          "remittance_id": null,
+          "remittance_status": "UNREMITTED",
+          "amount": 150.0
+        }
+      ],
+      "count": 1,
+      "total_amount": 150.0
+    }
+  },
+  "worklog-detail": {
+    "request": "GET /api/v1/worklogs/7d9118c8-11fd-47ec-a8af-c7db6f66b07c",
+    "response": {
+      "id": "7d9118c8-11fd-47ec-a8af-c7db6f66b07c",
+      "task_name": "Landing page redesign",
+      "work_date": "2026-03-01",
+      "is_adjusted": false,
+      "owner_id": "6b5683ca-908f-42a0-b8af-591e5770e031",
+      "freelancer_email": "admin@example.com",
+      "freelancer_name": "System Admin",
+      "remittance_id": null,
+      "remittance_status": "UNREMITTED",
+      "amount": 150.0,
+      "entries": [
+        {
+          "id": "34a11e2c-ec4b-4753-8d68-ec6fbba7dc29",
+          "worklog_id": "7d9118c8-11fd-47ec-a8af-c7db6f66b07c",
+          "description": "Implementation work",
+          "hours": 3.5,
+          "hourly_rate": 30.0,
+          "is_disputed": false,
+          "is_removed": false,
+          "amount": 105.0,
+          "created_at": "2026-03-24T10:00:00.000000Z"
+        },
+        {
+          "id": "3e7cfd32-16de-4992-93ea-2ef13ec3a48b",
+          "worklog_id": "7d9118c8-11fd-47ec-a8af-c7db6f66b07c",
+          "description": "QA and revisions",
+          "hours": 1.5,
+          "hourly_rate": 30.0,
+          "is_disputed": false,
+          "is_removed": false,
+          "amount": 45.0,
+          "created_at": "2026-03-24T10:00:00.000000Z"
+        }
+      ]
+    }
+  },
+  "generate-remittances-for-all-users": {
+    "request": "POST /api/v1/generate-remittances-for-all-users",
+    "request_body": {
+      "period_start": "2026-03-01",
+      "period_end": "2026-03-31",
+      "excluded_worklog_ids": [],
+      "excluded_user_ids": []
+    },
+    "response": {
+      "remittances": [
+        {
+          "id": "2cc4d2f3-915d-46bb-b7ef-f58fdb55d746",
+          "owner_id": "6b5683ca-908f-42a0-b8af-591e5770e031",
+          "period_start": "2026-03-01",
+          "period_end": "2026-03-31",
+          "status": "COMPLETED",
+          "total_amount": 150.0,
+          "created_at": "2026-03-24T10:30:00.000000Z"
+        }
+      ],
+      "processed_worklog_ids": [
+        "7d9118c8-11fd-47ec-a8af-c7db6f66b07c"
+      ],
+      "total_amount": 150.0
+    }
+  }
+}
